@@ -23,8 +23,7 @@ public class PluginUtils(CS2_Poor_MapPropAds plugin)
             }
 
             QAngle qangle = new QAngle(0, angle.Y, 0);
-
-            entity!.Entity!.Name = "advert";
+            
             entity.CBodyComponent!.SceneNode!.Owner!.Entity!.Flags &= ~(uint)(1 << 2);
 
             entity.SetModel(_plugin.Config.Props[index]);
