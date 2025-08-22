@@ -32,8 +32,8 @@ SoonTM
   "Admin Flag": "@css/root",
   "Vip Flag": "@vip/noadv",
   "Props Path": [
-	"materials/Example/exampleTexture.vmat", // ID 0
-	"materials/Example/exampleTexture2.vmat" // ID 1 etc...
+	"models/Example/exampleTexture.vmdl", // ID 0
+	"models/Example/exampleTexture2.vmdl" // ID 1 etc...
   ],
   "Enable commands": true,
   "Debug Mode": true,
@@ -46,7 +46,7 @@ Tried to make plugin idiot proof (since I did a lot of mistakes).
 | Command  | Description |
 | ------------- | ------------- |
 | css_placedecals | Allow to place advertisements |
-| css_setdecal **ID_OF_DECAL** **WIDTH** **HEIGHT** **FORCE_ON_VIP (TRUE/FALSE)** | Configure decal that you want to place |
+| css_setdecal **ID_OF_DECAL** **FORCE_ON_VIP (TRUE/FALSE)** | Configure decal that you want to place |
 | css_pingdecals | Allows to place decals using Ping function |
 | css_removedecal **ID** | Remove already placed decal using ID |
 | css_tpdecal **ID** | Teleports to already existing decal using ID |
