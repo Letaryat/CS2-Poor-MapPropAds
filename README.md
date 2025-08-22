@@ -1,7 +1,7 @@
 # CS2-Poor-MapDecals
 
 This plugin allows for server owners to create billboard type advertisements that are placed on wall.<br/>
-This is almost 1:1 copy of my [CS2-Poor-MapDecals](https://github.com/Letaryat/CS2-Poor-MapDecals), but this uses models (vmdl) instead of vmat textures. It should not crash the server randomly but it does not look the same. Commands, logic etc is the same so you should decide which one you prefer to use and not use both at the same time.
+This is almost 1:1 copy of my [CS2-Poor-MapDecals](https://github.com/Letaryat/CS2-Poor-MapDecals), but this uses models (vmdl) instead of vmat textures. It should not crash the server randomly but it does not look the same. Commands, logic etc is the same so you should decide which one you prefer to use and not use both at the same time. <br>
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/H2H8TK0L9)
 
 ## [📺] Video presentation
