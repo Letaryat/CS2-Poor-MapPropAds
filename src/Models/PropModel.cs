@@ -13,5 +13,6 @@
         public float width { get; set; }
         public float height { get; set; }
         public bool forceOnVip { get; set; }
+        public bool isOnGround { get; set; }
     }
 }

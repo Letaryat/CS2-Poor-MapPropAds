@@ -8,7 +8,7 @@ public class PluginUtils(CS2_Poor_MapPropAds plugin)
 {
     private readonly CS2_Poor_MapPropAds _plugin = plugin;
 
-    public void CreateDecal(Vector cords, QAngle angle, int index, bool forceOnVip)
+    public void CreateDecal(Vector cords, QAngle angle, int index, bool forceOnVip, bool onGround)
     {
         var entity = Utilities.CreateEntityByName<CPhysicsPropOverride>("prop_physics_override");
         if (entity == null) return;
@@ -29,6 +29,13 @@ public class PluginUtils(CS2_Poor_MapPropAds plugin)
             entity.SetModel(_plugin.Config.Props[index]);
 
             entity.Teleport(new Vector(cords.X, cords.Y, cords.Z), qangle);
+
+            if (onGround)
+            {
+                entity.AbsRotation!.X = -90;
+            }
+            
+
             entity!.DispatchSpawn();
         }
         catch (Exception error)
@@ -60,13 +67,13 @@ public class PluginUtils(CS2_Poor_MapPropAds plugin)
             if (eyeAngleZ < -0.90)
             {
                 offsetPos.Z += 1f;
-                CreateDecal(offsetPos, new QAngle(0, spriteAngle.Y, 0), _plugin.DecalAdToPlace, forceOnVip);
-                _plugin.PropManager!.PushCordsToFile(offsetPos, new QAngle(0, spriteAngle.Y, 0), _plugin.DecalAdToPlace, forceOnVip);
+                CreateDecal(offsetPos, new QAngle(0, spriteAngle.Y, 0), _plugin.DecalAdToPlace, forceOnVip, true);
+                _plugin.PropManager!.PushCordsToFile(offsetPos, new QAngle(0, spriteAngle.Y, 0), _plugin.DecalAdToPlace, forceOnVip, true);
             }
             else
             {
-                CreateDecal(offsetPos, new QAngle(90, spriteAngle.Y, 0), _plugin.DecalAdToPlace, forceOnVip);
-                _plugin.PropManager!.PushCordsToFile(offsetPos, new QAngle(90, spriteAngle.Y, 0), _plugin.DecalAdToPlace, forceOnVip);
+                CreateDecal(offsetPos, new QAngle(90, spriteAngle.Y, 0), _plugin.DecalAdToPlace, forceOnVip, false);
+                _plugin.PropManager!.PushCordsToFile(offsetPos, new QAngle(90, spriteAngle.Y, 0), _plugin.DecalAdToPlace, forceOnVip, false);
             }
         }
         catch (Exception error)

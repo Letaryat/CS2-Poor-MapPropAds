@@ -32,7 +32,7 @@ namespace CS2_Poor_MapPropAds.Managers
             }
         }
 
-        public void PushCordsToFile(Vector pos, QAngle angle, int newIndex, bool forceToVip)
+        public void PushCordsToFile(Vector pos, QAngle angle, int newIndex, bool forceToVip, bool onGround)
         {
             lock (_fileLock)
             {
@@ -49,7 +49,8 @@ namespace CS2_Poor_MapPropAds.Managers
                     angleX = angle.X,
                     angleY = angle.Y,
                     angleZ = angle.Z,
-                    forceOnVip = forceToVip
+                    forceOnVip = forceToVip,
+                    isOnGround = onGround
                 });
                 var options = new JsonSerializerOptions { WriteIndented = true };
                 File.WriteAllText(_mapFilePath!, JsonSerializer.Serialize(_props, options));
@@ -75,7 +76,7 @@ namespace CS2_Poor_MapPropAds.Managers
         {
             foreach (var prop in _props)
             {
-                _plugin.PluginUtils!.CreateDecal(new Vector(prop.posX, prop.posY, prop.posZ), new QAngle(prop.angleX, prop.angleY, prop.angleZ), prop.ModelIndex, prop.forceOnVip);
+                _plugin.PluginUtils!.CreateDecal(new Vector(prop.posX, prop.posY, prop.posZ), new QAngle(prop.angleX, prop.angleY, prop.angleZ), prop.ModelIndex, prop.forceOnVip, prop.isOnGround ? true : false);
             }
         }
 
