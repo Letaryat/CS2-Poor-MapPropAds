@@ -8,7 +8,7 @@ public class PluginUtils(CS2_Poor_MapPropAds plugin)
 {
     private readonly CS2_Poor_MapPropAds _plugin = plugin;
 
-    public void CreateDecal(Vector cords, QAngle angle, int index, bool forceOnVip, bool onGround)
+    public void CreateDecal(Vector cords, QAngle angle, int index, bool forceOnVip, bool onGround, int materialIndex)
     {
         var entity = Utilities.CreateEntityByName<CPhysicsPropOverride>("prop_physics_override");
         if (entity == null) return;
@@ -34,7 +34,10 @@ public class PluginUtils(CS2_Poor_MapPropAds plugin)
             {
                 entity.AbsRotation!.X = -90;
             }
-            
+            if (materialIndex != 0)
+            {
+                entity.AcceptInput("Skin", entity, entity, materialIndex.ToString());
+            }
 
             entity!.DispatchSpawn();
         }
@@ -61,19 +64,18 @@ public class PluginUtils(CS2_Poor_MapPropAds plugin)
         Vector offsetPos = impactPos + backward * 2f;
 
         double eyeAngleZ = GetPlayerEyeVector(pawn);
-        _plugin.DebugMode("Test1");
         try
         {
             if (eyeAngleZ < -0.90)
             {
                 offsetPos.Z += 1f;
-                CreateDecal(offsetPos, new QAngle(0, spriteAngle.Y, 0), _plugin.DecalAdToPlace, forceOnVip, true);
-                _plugin.PropManager!.PushCordsToFile(offsetPos, new QAngle(0, spriteAngle.Y, 0), _plugin.DecalAdToPlace, forceOnVip, true);
+                CreateDecal(offsetPos, new QAngle(0, spriteAngle.Y, 0), _plugin.DecalAdToPlace, forceOnVip, true, _plugin.MaterialGroupOfDecal);
+                _plugin.PropManager!.PushCordsToFile(offsetPos, new QAngle(0, spriteAngle.Y, 0), _plugin.DecalAdToPlace, forceOnVip, true, _plugin.MaterialGroupOfDecal);
             }
             else
             {
-                CreateDecal(offsetPos, new QAngle(90, spriteAngle.Y, 0), _plugin.DecalAdToPlace, forceOnVip, false);
-                _plugin.PropManager!.PushCordsToFile(offsetPos, new QAngle(90, spriteAngle.Y, 0), _plugin.DecalAdToPlace, forceOnVip, false);
+                CreateDecal(offsetPos, new QAngle(90, spriteAngle.Y, 0), _plugin.DecalAdToPlace, forceOnVip, false, _plugin.MaterialGroupOfDecal);
+                _plugin.PropManager!.PushCordsToFile(offsetPos, new QAngle(90, spriteAngle.Y, 0), _plugin.DecalAdToPlace, forceOnVip, false, _plugin.MaterialGroupOfDecal);
             }
         }
         catch (Exception error)

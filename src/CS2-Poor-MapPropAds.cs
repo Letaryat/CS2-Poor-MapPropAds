@@ -4,9 +4,7 @@ using CS2_Poor_MapPropAds.Managers;
 using CS2_Poor_MapPropAds.Utils;
 using Microsoft.Extensions.Logging;
 
-
 namespace CS2_Poor_MapPropAds;
-
 
 public class CS2_Poor_MapPropAds : BasePlugin, IPluginConfig<PluginConfig>
 {
@@ -31,8 +29,7 @@ public class CS2_Poor_MapPropAds : BasePlugin, IPluginConfig<PluginConfig>
     public bool AllowAdminCommands = false;
     public bool PingPlacement = false;
     public int DecalAdToPlace = 0;
-    public float DecalWidth = 128;
-    public float DecalHeight = 128;
+    public int MaterialGroupOfDecal = 0;
     public bool ForceOnVip = false;
 
     public override void Load(bool hotReload)

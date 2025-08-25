@@ -32,7 +32,7 @@ namespace CS2_Poor_MapPropAds.Managers
             }
         }
 
-        public void PushCordsToFile(Vector pos, QAngle angle, int newIndex, bool forceToVip, bool onGround)
+        public void PushCordsToFile(Vector pos, QAngle angle, int newIndex, bool forceToVip, bool onGround, int GroupIndex)
         {
             lock (_fileLock)
             {
@@ -43,6 +43,7 @@ namespace CS2_Poor_MapPropAds.Managers
                 {
                     Id = newId,
                     ModelIndex = newIndex,
+                    ModelGroupIndex = GroupIndex,
                     posX = pos.X,
                     posY = pos.Y,
                     posZ = pos.Z,
@@ -76,7 +77,7 @@ namespace CS2_Poor_MapPropAds.Managers
         {
             foreach (var prop in _props)
             {
-                _plugin.PluginUtils!.CreateDecal(new Vector(prop.posX, prop.posY, prop.posZ), new QAngle(prop.angleX, prop.angleY, prop.angleZ), prop.ModelIndex, prop.forceOnVip, prop.isOnGround ? true : false);
+                _plugin.PluginUtils!.CreateDecal(new Vector(prop.posX, prop.posY, prop.posZ), new QAngle(prop.angleX, prop.angleY, prop.angleZ), prop.ModelIndex, prop.forceOnVip, prop.isOnGround ? true : false, prop.ModelGroupIndex);
             }
         }
 
