@@ -25,7 +25,7 @@ public class CommandsManager(CS2_Poor_MapPropAds plugin)
         }
     }
 
-    [CommandHelper(minArgs: 2, usage: "[modelid], [ForceToVip (true / false)]", whoCanExecute: CommandUsage.CLIENT_AND_SERVER)]
+    [CommandHelper(minArgs: 2, usage: "[modelid], [ForceToVip (true / false)], [If exist - ID of materialGroup (default 0)]", whoCanExecute: CommandUsage.CLIENT_AND_SERVER)]
     private void OnConfigureAd(CCSPlayerController? player, CommandInfo commandInfo)
     {
         if (player == null || !player!.PlayerPawn.IsValid || player.PlayerPawn.Value == null) return;
@@ -40,6 +40,21 @@ public class CommandsManager(CS2_Poor_MapPropAds plugin)
 
         var model = commandInfo.GetArg(1);
         var forceToVipArg = commandInfo.GetArg(2);
+        _plugin.MaterialGroupOfDecal = 0;
+
+        if (commandInfo.ArgCount >= 4)
+        {
+            if (int.TryParse(commandInfo.GetArg(3), out var parsedGroupId))
+            {
+                _plugin.MaterialGroupOfDecal = parsedGroupId;
+            }
+            else
+            {
+                player.PrintToChat($"{_plugin.Localizer["Prefix"]}{_plugin.Localizer["WrongMaterialGroup"]}");
+                return;
+            }
+        }
+
         bool forceToVipParsed = bool.TryParse(forceToVipArg, out bool forceToVip);
 
         var Count = _plugin.Config.Props.Count();
@@ -52,7 +67,7 @@ public class CommandsManager(CS2_Poor_MapPropAds plugin)
         _plugin.DecalAdToPlace = Int32.Parse(model);
         _plugin.ForceOnVip = forceToVip;
 
-        player.PrintToChat($"{_plugin.Localizer["Prefix"]}{_plugin.Localizer["SetModel", model, forceToVip]}");
+        player.PrintToChat($"{_plugin.Localizer["Prefix"]}{_plugin.Localizer["SetModel", model, forceToVip, _plugin.MaterialGroupOfDecal]}");
 
     }
     private void OnAllowPlacing(CCSPlayerController? player, CommandInfo commandInfo)

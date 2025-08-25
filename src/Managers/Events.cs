@@ -47,8 +47,6 @@ public class EventManager(CS2_Poor_MapPropAds plugin)
         var pawn = player.PlayerPawn.Value;
         if (pawn == null) return HookResult.Continue;
 
-        
-        _plugin.DebugMode("Test0.5");
         _plugin.PluginUtils!.CreateDecalOnClick(player, new Vector(ping.X, ping.Y, ping.Z), _plugin.ForceOnVip);
 
         return HookResult.Continue;
