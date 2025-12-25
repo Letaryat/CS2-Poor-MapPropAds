@@ -10,8 +10,8 @@ SoonTM
     <img src="img/1.jpg" width="500">
 </p>
 
-Tutorial in Portuguese:
-[![CS2-Poor-Pets Showcase](http://img.youtube.com/vi/70zumLkba_U/0.jpg)](https://www.youtube.com/watch?v=70zumLkba_U "Portuguese tutorial")
+- [Tutorial in Portuguese](https://www.youtube.com/watch?v=70zumLkba_U)
+
 
 ## [📌] Setup
 - Download latest release,
