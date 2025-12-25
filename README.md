@@ -10,7 +10,7 @@ SoonTM
     <img src="img/1.jpg" width="500">
 </p>
 
-- [Tutorial in Portuguese](https://www.youtube.com/watch?v=70zumLkba_U)
+- [Tutorial in Portuguese by alekfps0](https://www.youtube.com/watch?v=70zumLkba_U)
 
 
 ## [📌] Setup
